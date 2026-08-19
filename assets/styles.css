@@ -122,8 +122,7 @@ button { color: inherit; }
 .foundation-content { align-self: center; max-width: 650px; padding: clamp(4rem, 8vw, 9rem); }
 .foundation-content h2 { margin: 0; font-family: var(--serif); font-size: clamp(3rem, 5vw, 5.5rem); font-weight: 300; letter-spacing: -.06em; line-height: 1; }
 .foundation-content > p:not(.eyebrow):not(.status-note) { margin: 2rem 0; color: var(--muted); font-size: 1.05rem; }
-.status-note, .development-badge { display: flex; align-items: center; gap: .65rem; color: var(--teal); font-size: .7rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
-.status-note span, .development-badge span { width: 7px; height: 7px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 0 5px rgba(59,143,145,.12); }
+.status-note, .development-badge { color: var(--teal); font-size: .7rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
 .foundation-content .text-link { margin-top: 1.3rem; }
 
 .contact { background: var(--ivory-soft); }
