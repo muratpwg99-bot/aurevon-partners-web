@@ -283,8 +283,6 @@ button { color: inherit; }
   .sector-row { grid-template-columns: 34px 1fr; gap: 1.1rem; }
   .sector-themes { grid-template-columns: 1fr; }
   .sector-themes li { padding: .8rem 0; border-bottom: 1px solid rgba(255,255,255,.12); }
-  .about-contact a[href^="mailto:"] span[aria-hidden="true"], .foundation-email span[aria-hidden="true"] { font-size: 0; }
-  .about-contact a[href^="mailto:"] span[aria-hidden="true"]::after, .foundation-email span[aria-hidden="true"]::after { content: "→"; font-size: 1.05rem; line-height: 1; }
   .lens-card { min-height: 240px; }
   .lens-card h3 { margin-top: 3rem; }
 }
