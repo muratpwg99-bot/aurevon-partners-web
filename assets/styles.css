@@ -166,6 +166,7 @@ button { color: inherit; }
 .sector-detail { display: grid; grid-template-rows: 1fr auto; align-self: stretch; }
 .sector-detail > p { margin: 0; color: rgba(255,255,255,.64); }
 .sector-themes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; width: 100%; margin: 2rem 0 0; padding: 0; border-top: 1px solid rgba(255,255,255,.17); list-style: none; }
+.sector-themes-four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .sector-themes li { box-sizing: border-box; align-self: start; min-width: 0; padding: 1rem 1rem 0 0; color: rgba(255,255,255,.82); font-size: .68rem; font-weight: 650; letter-spacing: .075em; line-height: 1.45; text-align: left; text-transform: uppercase; }
 .investment-lens { background: var(--ivory); }
 .investment-lens-head { display: grid; grid-template-columns: 1fr .65fr; gap: 5rem; margin-top: clamp(3rem, 6vw, 6rem); align-items: end; }
