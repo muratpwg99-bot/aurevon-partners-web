@@ -6,6 +6,7 @@ const pages = ['index.html', 'foundation.html', 'legal.html', 'privacy.html'];
 const requiredAssets = [
   'assets/styles.css',
   'assets/main.js',
+  'assets/fonts/manrope-variable.ttf',
   'assets/aurevon-horizontal-navy.svg',
   'assets/aurevon-primary-white.svg',
   'assets/favicon.ico',
@@ -37,7 +38,7 @@ if (!homepage.includes('Aurevon Partners S.à r.l.-SPF')) throw new Error('Homep
 if (!homepage.includes('RCS Luxembourg B 293395')) throw new Error('Homepage missing RCS number');
 
 const foundation = await readFile(resolve(root, 'foundation.html'), 'utf8');
-if (!foundation.includes('not presented as an incorporated or registered foundation')) {
+if (!foundation.includes('not a separately incorporated or registered foundation')) {
   throw new Error('Foundation status disclosure is missing');
 }
 

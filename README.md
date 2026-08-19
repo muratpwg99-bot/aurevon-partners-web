@@ -5,7 +5,7 @@ Public corporate website for **Aurevon Partners S.à r.l.-SPF**, designed as a l
 ## Pages
 
 - `index.html` — family wealth vehicle, approach and contact
-- `foundation.html` — planned philanthropic initiative with status disclosure
+- `foundation.html` — annual philanthropic division and programme with status disclosure
 - `legal.html` — company and SPF legal notice
 - `privacy.html` — privacy information
 
@@ -29,4 +29,4 @@ GitHub Pages serves the repository from the `main` branch. The production domain
 
 ## Legal content note
 
-The “Aurevon Foundation Initiative” is presented as an initiative in development, not as an incorporated or registered foundation. Its public status language should only be changed after the intended vehicle has been legally established and counsel has approved the wording.
+“Aurevon Foundation” is presented as the philanthropic division and annual programme of Aurevon Partners, not as a separately incorporated or registered foundation or public grant-making institution. Its public status language should only be changed if a separate legal vehicle is established and counsel has approved the wording.
