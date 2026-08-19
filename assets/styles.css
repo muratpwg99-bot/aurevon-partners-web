@@ -163,9 +163,10 @@ button { color: inherit; }
 .sector-number { color: var(--sand); font-size: .68rem; letter-spacing: .12em; }
 .sector-name { margin: 0 0 1rem; color: var(--sand); font-size: .68rem; font-weight: 700; letter-spacing: .17em; text-transform: uppercase; }
 .sector-heading h3 { max-width: 490px; margin: 0; font-family: var(--serif); font-size: clamp(1.7rem, 2.7vw, 2.8rem); font-weight: 400; letter-spacing: -.045em; line-height: 1.18; }
+.sector-detail { display: grid; grid-template-rows: 1fr auto; align-self: stretch; }
 .sector-detail > p { margin: 0; color: rgba(255,255,255,.64); }
-.sector-themes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin: 2rem 0 0; padding: 0; border-top: 1px solid rgba(255,255,255,.17); list-style: none; }
-.sector-themes li { padding: 1rem .9rem 0 0; color: rgba(255,255,255,.82); font-size: .72rem; font-weight: 650; letter-spacing: .08em; line-height: 1.45; text-transform: uppercase; }
+.sector-themes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; width: 100%; margin: 2rem 0 0; padding: 0; border-top: 1px solid rgba(255,255,255,.17); list-style: none; }
+.sector-themes li { box-sizing: border-box; align-self: start; min-width: 0; padding: 1rem 1rem 0 0; color: rgba(255,255,255,.82); font-size: .68rem; font-weight: 650; letter-spacing: .075em; line-height: 1.45; text-align: left; text-transform: uppercase; }
 .investment-lens { background: var(--ivory); }
 .investment-lens-head { display: grid; grid-template-columns: 1fr .65fr; gap: 5rem; margin-top: clamp(3rem, 6vw, 6rem); align-items: end; }
 .investment-lens-head > p { max-width: 530px; margin: 0 0 .7rem; color: var(--muted); }

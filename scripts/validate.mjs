@@ -40,7 +40,7 @@ if (!homepage.includes('01 · About us')) throw new Error('Homepage missing Abou
 if (!homepage.includes('contact@aurevon-partners.com')) throw new Error('Homepage missing public contact email');
 
 const about = await readFile(resolve(root, 'about.html'), 'utf8');
-for (const term of ['asset managers', 'AIFMs', 'cybersecurity', 'artificial intelligence', 'machinery', 'engineering firms']) {
+for (const term of ['asset managers', 'AIFMs', 'cybersecurity', 'Agentic AI as a Service', 'machinery', 'engineering firms']) {
   if (!about.toLowerCase().includes(term.toLowerCase())) throw new Error(`About page missing investment focus: ${term}`);
 }
 if (!about.includes('aria-current="page"')) throw new Error('About page navigation is not marked current');
