@@ -48,5 +48,12 @@ const foundation = await readFile(resolve(root, 'foundation.html'), 'utf8');
 if (!foundation.includes('not a separately incorporated or registered foundation')) {
   throw new Error('Foundation status disclosure is missing');
 }
+if (!foundation.includes('children with disabilities')) throw new Error('Foundation focus is missing');
+if (!foundation.includes('foundation@aurevon-partners.com')) throw new Error('Foundation contact email is missing');
+
+const legal = await readFile(resolve(root, 'legal.html'), 'utf8');
+if (legal.includes('Responsible for content') || legal.includes('Murat Bayindir')) {
+  throw new Error('Legal notice still names an individual responsible for content');
+}
 
 console.log(`Validated ${pages.length} pages and ${requiredAssets.length} required assets.`);
