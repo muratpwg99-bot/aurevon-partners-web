@@ -1,0 +1,9 @@
+{
+  "name": "aurevon-partners-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Aurevon Partners public corporate website",
+  "scripts": {
+    "test": "node scripts/validate.mjs"
+  }
+}
