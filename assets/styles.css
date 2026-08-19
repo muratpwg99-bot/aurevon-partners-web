@@ -17,6 +17,7 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+[id] { scroll-margin-top: 90px; }
 body { margin: 0; background: var(--ivory-soft); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
 img { display: block; max-width: 100%; }
 a { color: inherit; }
@@ -159,8 +160,9 @@ button { color: inherit; }
 .legal-intro { max-width: 720px; margin: -2rem 0 4rem; font-family: var(--serif); font-size: 1.45rem; }
 .updated { margin-top: 3.5rem; font-size: .78rem; text-transform: uppercase; letter-spacing: .1em; }
 
-.reveal { opacity: 0; transform: translateY(26px); transition: opacity .85s ease, transform .85s cubic-bezier(.2,.7,.2,1); }
-.reveal.is-visible { opacity: 1; transform: none; }
+.reveal { opacity: 1; transform: none; }
+.js .reveal { opacity: 0; transform: translateY(26px); transition: opacity .85s ease, transform .85s cubic-bezier(.2,.7,.2,1); }
+.js .reveal.is-visible { opacity: 1; transform: none; }
 @keyframes rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
 @keyframes breathe { 0%, 100% { transform: scale(1); opacity: .72; } 50% { transform: scale(1.035); opacity: 1; } }
 @keyframes slow-spin { to { transform: rotate(360deg); } }
@@ -212,5 +214,5 @@ button { color: inherit; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
-  .reveal { opacity: 1; transform: none; }
+  .js .reveal { opacity: 1; transform: none; }
 }
