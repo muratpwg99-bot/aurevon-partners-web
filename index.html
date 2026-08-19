@@ -27,7 +27,7 @@
         <span class="sr-only">Open navigation</span>
       </button>
       <nav class="site-nav" id="site-nav" aria-label="Primary navigation" data-nav>
-        <a href="#identity">About</a>
+        <a href="#about">About</a>
         <a href="#approach">Approach</a>
         <a href="foundation.html">Foundation</a>
         <a class="nav-contact" href="#contact">Contact</a>
@@ -37,13 +37,21 @@
     <main id="main">
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-grid" aria-hidden="true"></div>
-        <div class="hero-orbit orbit-one" aria-hidden="true"></div>
-        <div class="hero-orbit orbit-two" aria-hidden="true"></div>
+        <div class="market-motion" aria-hidden="true" data-market-motion>
+          <svg viewBox="0 0 760 700" role="presentation">
+            <path class="signal signal-muted" d="M0 544 L88 514 L162 526 L236 448 L316 472 L394 356 L474 378 L548 260 L632 292 L760 128"></path>
+            <path class="signal signal-sand" d="M0 610 L88 578 L162 590 L236 532 L316 550 L394 476 L474 492 L548 400 L632 420 L760 318"></path>
+            <path class="signal signal-teal" d="M0 652 L88 638 L162 646 L236 614 L316 622 L394 574 L474 584 L548 524 L632 534 L760 458"></path>
+          </svg>
+          <div class="market-motion-labels">
+            <span>Finance</span><span>Technology</span><span>Industrials</span>
+          </div>
+        </div>
         <div class="hero-inner">
           <p class="eyebrow hero-eyebrow">Independent · Family-led · Luxembourg</p>
           <h1 id="hero-title">Three markets.<br><em>One point of view.</em></h1>
           <p class="hero-copy">Aurevon Partners is a family-led investment firm seeking opportunities across finance, technology and industrials — always for our own account.</p>
-          <a class="text-link text-link-light" href="#identity">Discover Aurevon <span aria-hidden="true">↘</span></a>
+          <a class="text-link text-link-light" href="#about">Discover Aurevon <span aria-hidden="true">↘</span></a>
         </div>
         <div class="hero-signature" aria-hidden="true">
           <img src="assets/aurevon-primary-white.svg" alt="">
@@ -51,13 +59,18 @@
         <div class="scroll-note" aria-hidden="true"><span></span> Scroll to explore</div>
       </section>
 
-      <section class="intro section" id="identity" aria-labelledby="identity-title">
-        <div class="section-kicker reveal">01 · Who we are</div>
+      <section class="intro section" id="about" aria-labelledby="about-title">
+        <div class="section-kicker reveal">01 · About us</div>
         <div class="intro-layout">
-          <h2 id="identity-title" class="display-title reveal">Independent<br><em>by design.</em></h2>
+          <h2 id="about-title" class="display-title reveal">A family-led firm.<br><em>Independent by design.</em></h2>
           <div class="intro-copy reveal">
             <p class="lead">Aurevon Partners S.à r.l.-SPF is a family-led Luxembourg investment company. We invest for our own account across finance, technology and industrials.</p>
             <p>Our work is shaped by curiosity, discipline and the freedom to form our own view. We look for well-positioned businesses, durable ideas and situations where patient analysis creates an edge. Aurevon does not manage third-party money or offer investment services to the public.</p>
+            <div class="about-pillars" aria-label="About Aurevon Partners">
+              <div><strong>Own account</strong><span>Aligned decision-making without external mandates.</span></div>
+              <div><strong>Selective</strong><span>Focused on opportunities where we can build conviction.</span></div>
+              <div><strong>Luxembourg</strong><span>Established as a family wealth management company.</span></div>
+            </div>
           </div>
         </div>
       </section>
@@ -97,8 +110,12 @@
 
       <section class="foundation-preview" aria-labelledby="foundation-title">
         <div class="foundation-visual" aria-hidden="true">
-          <div class="foundation-rings"></div>
-          <span>AP</span>
+          <svg class="impact-lines" viewBox="0 0 800 800" role="presentation">
+            <path class="impact-line impact-one" d="M-40 742 C132 690 170 548 324 528 C492 506 500 354 662 310 C728 292 782 248 840 170"></path>
+            <path class="impact-line impact-two" d="M-30 790 C156 724 206 638 350 606 C514 570 568 454 690 420 C760 400 810 356 850 300"></path>
+            <path class="impact-line impact-three" d="M-70 646 C86 616 180 442 306 420 C452 394 526 254 650 216 C730 192 782 134 844 66"></path>
+          </svg>
+          <div class="impact-caption"><span>Annual programme</span><strong>Purpose in motion</strong></div>
         </div>
         <div class="foundation-content reveal">
           <p class="eyebrow">Aurevon Foundation</p>
@@ -123,7 +140,7 @@
             </div>
             <div>
               <span>Email</span>
-              <a href="mailto:mb@aurevon-partners.com">mb@aurevon-partners.com</a>
+              <a href="mailto:contact@aurevon-partners.com">contact@aurevon-partners.com</a>
             </div>
             <div>
               <span>Website</span>

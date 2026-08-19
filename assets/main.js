@@ -42,12 +42,10 @@ if (reducedMotion || !('IntersectionObserver' in window)) {
 
 if (!reducedMotion) {
   const hero = document.querySelector('.hero');
-  const orbitOne = document.querySelector('.orbit-one');
-  const orbitTwo = document.querySelector('.orbit-two');
+  const marketMotion = document.querySelector('[data-market-motion]');
   hero?.addEventListener('pointermove', (event) => {
     const x = (event.clientX / window.innerWidth - 0.5) * 16;
     const y = (event.clientY / window.innerHeight - 0.5) * 16;
-    if (orbitOne) orbitOne.style.translate = `${x * 0.35}px ${y * 0.35}px`;
-    if (orbitTwo) orbitTwo.style.translate = `${x * -0.45}px ${y * -0.45}px`;
+    if (marketMotion) marketMotion.style.transform = `translate(${x * 0.45}px, ${y * 0.35}px)`;
   }, { passive: true });
 }

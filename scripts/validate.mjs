@@ -36,6 +36,13 @@ for (const page of pages) {
 const homepage = await readFile(resolve(root, 'index.html'), 'utf8');
 if (!homepage.includes('Aurevon Partners S.à r.l.-SPF')) throw new Error('Homepage missing full legal name');
 if (!homepage.includes('RCS Luxembourg B 293395')) throw new Error('Homepage missing RCS number');
+if (!homepage.includes('01 · About us')) throw new Error('Homepage missing About us section');
+if (!homepage.includes('contact@aurevon-partners.com')) throw new Error('Homepage missing public contact email');
+
+for (const page of pages) {
+  const html = await readFile(resolve(root, page), 'utf8');
+  if (html.includes('mb@aurevon-partners.com')) throw new Error(`${page}: old personal contact email remains`);
+}
 
 const foundation = await readFile(resolve(root, 'foundation.html'), 'utf8');
 if (!foundation.includes('not a separately incorporated or registered foundation')) {
