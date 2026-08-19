@@ -2,7 +2,7 @@ import { readFile, access } from 'node:fs/promises';
 import { resolve } from 'node:path';
 
 const root = resolve(import.meta.dirname, '..');
-const pages = ['index.html', 'foundation.html', 'legal.html', 'privacy.html'];
+const pages = ['index.html', 'about.html', 'foundation.html', 'legal.html', 'privacy.html'];
 const requiredAssets = [
   'assets/styles.css',
   'assets/main.js',
@@ -39,9 +39,16 @@ if (!homepage.includes('RCS Luxembourg B 293395')) throw new Error('Homepage mis
 if (!homepage.includes('01 · About us')) throw new Error('Homepage missing About us section');
 if (!homepage.includes('contact@aurevon-partners.com')) throw new Error('Homepage missing public contact email');
 
+const about = await readFile(resolve(root, 'about.html'), 'utf8');
+for (const term of ['asset managers', 'AIFMs', 'cybersecurity', 'artificial intelligence', 'machinery', 'engineering firms']) {
+  if (!about.toLowerCase().includes(term.toLowerCase())) throw new Error(`About page missing investment focus: ${term}`);
+}
+if (!about.includes('aria-current="page"')) throw new Error('About page navigation is not marked current');
+
 for (const page of pages) {
   const html = await readFile(resolve(root, page), 'utf8');
   if (html.includes('mb@aurevon-partners.com')) throw new Error(`${page}: old personal contact email remains`);
+  if (!html.includes('href="about.html"')) throw new Error(`${page}: About navigation does not link to the dedicated page`);
 }
 
 const foundation = await readFile(resolve(root, 'foundation.html'), 'utf8');

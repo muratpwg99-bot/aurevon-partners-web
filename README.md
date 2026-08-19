@@ -4,7 +4,8 @@ Public corporate website for **Aurevon Partners S.à r.l.-SPF**, designed as a l
 
 ## Pages
 
-- `index.html` — family wealth vehicle, approach and contact
+- `index.html` — company overview, investment markets and contact
+- `about.html` — detailed company profile and sector investment focus
 - `foundation.html` — annual philanthropic division and programme with status disclosure
 - `legal.html` — company and SPF legal notice
 - `privacy.html` — privacy information

@@ -92,6 +92,7 @@ button { color: inherit; }
 .about-pillars > div { min-height: 150px; padding: 1.3rem; background: var(--ivory-soft); }
 .about-pillars strong { display: block; margin-bottom: .7rem; color: var(--navy); font-size: .69rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
 .about-pillars span { display: block; color: var(--muted); font-size: .82rem; line-height: 1.55; }
+.about-more-link { margin-top: 2.3rem; }
 
 .section-dark { background: var(--navy-deep); color: white; }
 .section-dark > * { max-width: var(--max); }
@@ -153,6 +154,29 @@ button { color: inherit; }
 .inner-hero p:not(.eyebrow) { max-width: 650px; margin: 2.4rem 0 2rem; color: rgba(255,255,255,.66); font-size: 1.12rem; }
 .inner-hero-mark { position: absolute; right: -4vw; top: 50%; color: rgba(255,255,255,.035); font-family: var(--serif); font-size: min(49vw, 700px); font-weight: 200; line-height: .7; transform: translateY(-50%); }
 .inner-foundation-field { z-index: 1; inset: 5% -3% 5% 47%; opacity: .66; }
+.inner-about-field { z-index: 1; inset: 3% -4% 3% 50%; opacity: .68; }
+.about-profile-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(3rem, 8vw, 9rem); margin-top: clamp(3rem, 6vw, 6rem); align-items: start; }
+.sector-focus-head { display: grid; grid-template-columns: 1fr .65fr; gap: 5rem; margin-top: clamp(3rem, 6vw, 6rem); align-items: end; }
+.sector-focus-head > p { margin: 0 0 .7rem; color: rgba(255,255,255,.63); }
+.sector-stack { margin-top: clamp(4rem, 8vw, 8rem); border-top: 1px solid rgba(255,255,255,.17); }
+.sector-row { display: grid; grid-template-columns: .13fr .9fr 1.15fr; gap: clamp(2rem, 5vw, 5rem); padding: clamp(2.8rem, 5vw, 4.5rem) 0; border-bottom: 1px solid rgba(255,255,255,.17); }
+.sector-number { color: var(--sand); font-size: .68rem; letter-spacing: .12em; }
+.sector-name { margin: 0 0 1rem; color: var(--sand); font-size: .68rem; font-weight: 700; letter-spacing: .17em; text-transform: uppercase; }
+.sector-heading h3 { max-width: 490px; margin: 0; font-family: var(--serif); font-size: clamp(1.7rem, 2.7vw, 2.8rem); font-weight: 400; letter-spacing: -.045em; line-height: 1.18; }
+.sector-detail > p { margin: 0; color: rgba(255,255,255,.64); }
+.sector-themes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin: 2rem 0 0; padding: 0; border-top: 1px solid rgba(255,255,255,.17); list-style: none; }
+.sector-themes li { padding: 1rem .9rem 0 0; color: rgba(255,255,255,.82); font-size: .72rem; font-weight: 650; letter-spacing: .08em; line-height: 1.45; text-transform: uppercase; }
+.investment-lens { background: var(--ivory); }
+.investment-lens-head { display: grid; grid-template-columns: 1fr .65fr; gap: 5rem; margin-top: clamp(3rem, 6vw, 6rem); align-items: end; }
+.investment-lens-head > p { max-width: 530px; margin: 0 0 .7rem; color: var(--muted); }
+.lens-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: clamp(4rem, 7vw, 6rem); border: 1px solid var(--line); background: var(--line); }
+.lens-card { min-height: 300px; padding: clamp(1.7rem, 3vw, 2.6rem); background: var(--ivory-soft); }
+.lens-card span { color: var(--teal); font-size: .68rem; letter-spacing: .12em; }
+.lens-card h3 { margin: 5rem 0 1rem; color: var(--navy); font-family: var(--serif); font-size: clamp(1.45rem, 2vw, 2rem); font-weight: 500; letter-spacing: -.035em; }
+.lens-card p { margin: 0; color: var(--muted); }
+.about-contact-inner { display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(3rem, 9vw, 9rem); align-items: end; }
+.about-contact .eyebrow { color: var(--sand); }
+.about-contact-copy p { margin: 0 0 2.2rem; color: rgba(255,255,255,.64); }
 .development-badge { width: fit-content; padding: .8rem 1rem; border: 1px solid rgba(59,143,145,.5); color: #75babc; }
 .foundation-statement-grid { max-width: var(--max); }
 .focus-section .display-title { margin-top: 4rem; }
@@ -211,12 +235,14 @@ button { color: inherit; }
   .hero h1 { font-size: clamp(3.7rem, 15vw, 6.5rem); }
   .hero-signature { display: none; }
   .market-field { right: -25%; width: 82vw; opacity: .38; }
-  .intro-layout, .foundation-statement-grid, .principles-head, .contact-layout, .method-grid, .foundation-contact-grid, .disclosure-panel { grid-template-columns: 1fr; gap: 2.8rem; }
+  .intro-layout, .foundation-statement-grid, .about-profile-grid, .principles-head, .sector-focus-head, .investment-lens-head, .contact-layout, .method-grid, .foundation-contact-grid, .disclosure-panel, .about-contact-inner { grid-template-columns: 1fr; gap: 2.8rem; }
   .principle { grid-template-columns: 55px 1fr; }
   .principle p { grid-column: 2; }
   .foundation-preview { grid-template-columns: 1fr; }
   .foundation-visual { min-height: 520px; }
   .focus-grid { grid-template-columns: repeat(2, 1fr); }
+  .sector-row { grid-template-columns: 55px 1fr; }
+  .sector-detail { grid-column: 2; }
   .legal-grid { grid-template-columns: 1fr; }
   .footer-bottom { grid-template-columns: 1fr 1fr; }
   .footer-bottom > p { grid-column: 1 / -1; }
@@ -237,7 +263,7 @@ button { color: inherit; }
   .footer-top { display: grid; gap: 2rem; }
   .footer-bottom { grid-template-columns: 1fr; gap: 1.6rem; }
   .footer-bottom > p { grid-column: auto; }
-  .focus-grid, .legal-grid { grid-template-columns: 1fr; }
+  .focus-grid, .legal-grid, .lens-grid { grid-template-columns: 1fr; }
   .focus-card { min-height: 260px; }
   .focus-card h3 { margin-top: 3rem; }
   .about-pillars { grid-template-columns: 1fr; }
@@ -245,6 +271,12 @@ button { color: inherit; }
   .inner-hero > div:not(.inner-hero-mark):not(.architectural-field) { width: 100%; }
   .inner-hero h1 { font-size: clamp(3.35rem, 16vw, 5.2rem); }
   .inner-foundation-field { inset: 3% -35% 3% 38%; opacity: .3; }
+  .inner-about-field { inset: 3% -42% 3% 34%; opacity: .3; }
+  .sector-row { grid-template-columns: 34px 1fr; gap: 1.1rem; }
+  .sector-themes { grid-template-columns: 1fr; }
+  .sector-themes li { padding: .8rem 0; border-bottom: 1px solid rgba(255,255,255,.12); }
+  .lens-card { min-height: 240px; }
+  .lens-card h3 { margin-top: 3rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
