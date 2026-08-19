@@ -1,8 +1,14 @@
 import { readFile, access } from 'node:fs/promises';
-import { resolve } from 'node:path';
+import { dirname, resolve } from 'node:path';
 
 const root = resolve(import.meta.dirname, '..');
-const pages = ['index.html', 'about.html', 'foundation.html', 'legal.html', 'privacy.html'];
+const pageNames = ['index.html', 'about.html', 'foundation.html', 'legal.html', 'privacy.html'];
+const locales = [
+  { prefix: '', lang: 'en' },
+  { prefix: 'fr/', lang: 'fr' },
+  { prefix: 'tr/', lang: 'tr' }
+];
+const pages = locales.flatMap(({ prefix, lang }) => pageNames.map((name) => ({ path: `${prefix}${name}`, lang })));
 const requiredAssets = [
   'assets/styles.css',
   'assets/main.js',
@@ -16,20 +22,38 @@ const requiredAssets = [
 for (const asset of requiredAssets) await access(resolve(root, asset));
 
 for (const page of pages) {
-  const html = await readFile(resolve(root, page), 'utf8');
+  const html = await readFile(resolve(root, page.path), 'utf8');
   const checks = [
     ['doctype', /<!doctype html>/i],
-    ['language', /<html lang="en">/i],
+    ['language', new RegExp(`<html lang="${page.lang}">`, 'i')],
     ['viewport', /name="viewport"/i],
     ['title', /<title>[^<]+<\/title>/i],
     ['main landmark', /<main\b/i],
-    ['footer', /<footer\b/i]
+    ['footer', /<footer\b/i],
+    ['language selector', /class="language-switcher"/i],
+    ['English alternate', /hreflang="en"/i],
+    ['French alternate', /hreflang="fr"/i],
+    ['Turkish alternate', /hreflang="tr"/i]
   ];
   for (const [label, pattern] of checks) {
-    if (!pattern.test(html)) throw new Error(`${page}: missing ${label}`);
+    if (!pattern.test(html)) throw new Error(`${page.path}: missing ${label}`);
   }
   if (/href="\/(?!\/)/.test(html) || /src="\/(?!\/)/.test(html)) {
-    throw new Error(`${page}: root-relative asset path breaks GitHub project pages`);
+    throw new Error(`${page.path}: root-relative asset path breaks GitHub project pages`);
+  }
+  if (html.includes('mb@aurevon-partners.com')) throw new Error(`${page.path}: old personal contact email remains`);
+
+  const localRefs = [...html.matchAll(/(?:href|src)="([^"]+)"/g)]
+    .map((match) => match[1])
+    .filter((ref) => !ref.startsWith('#') && !/^(?:https?:|mailto:|tel:)/i.test(ref))
+    .map((ref) => ref.split(/[?#]/, 1)[0])
+    .filter(Boolean);
+  for (const ref of localRefs) {
+    try {
+      await access(resolve(dirname(resolve(root, page.path)), ref));
+    } catch {
+      throw new Error(`${page.path}: broken local reference ${ref}`);
+    }
   }
 }
 
@@ -46,9 +70,8 @@ for (const term of ['asset managers', 'AIFMs', 'cybersecurity', 'Agentic AI as a
 if (!about.includes('aria-current="page"')) throw new Error('About page navigation is not marked current');
 
 for (const page of pages) {
-  const html = await readFile(resolve(root, page), 'utf8');
-  if (html.includes('mb@aurevon-partners.com')) throw new Error(`${page}: old personal contact email remains`);
-  if (!html.includes('href="about.html"')) throw new Error(`${page}: About navigation does not link to the dedicated page`);
+  const html = await readFile(resolve(root, page.path), 'utf8');
+  if (!html.includes('href="about.html"')) throw new Error(`${page.path}: About navigation does not link to the dedicated page`);
 }
 
 const foundation = await readFile(resolve(root, 'foundation.html'), 'utf8');
@@ -63,4 +86,4 @@ if (legal.includes('Responsible for content') || legal.includes('Murat Bayindir'
   throw new Error('Legal notice still names an individual responsible for content');
 }
 
-console.log(`Validated ${pages.length} pages and ${requiredAssets.length} required assets.`);
+console.log(`Validated ${pages.length} pages across ${locales.length} languages and ${requiredAssets.length} required assets.`);

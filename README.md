@@ -2,6 +2,8 @@
 
 Public corporate website for **Aurevon Partners S.à r.l.-SPF**, designed as a lightweight, dependency-free static site.
 
+The site is available in English, French and Turkish. English pages live at the project root; full French and Turkish versions live under `fr/` and `tr/`. Every page includes direct language equivalents and `hreflang` metadata.
+
 ## Pages
 
 - `index.html` — company overview, investment markets and contact
@@ -9,6 +11,8 @@ Public corporate website for **Aurevon Partners S.à r.l.-SPF**, designed as a l
 - `foundation.html` — annual philanthropic division and programme with status disclosure
 - `legal.html` — company and SPF legal notice
 - `privacy.html` — privacy information
+- `fr/` — complete French version of all five pages
+- `tr/` — complete Turkish version of all five pages
 
 ## Local preview
 
