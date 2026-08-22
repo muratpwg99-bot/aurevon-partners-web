@@ -4,11 +4,11 @@ import { dirname, resolve } from 'node:path';
 const root = resolve(import.meta.dirname, '..');
 const pageNames = ['index.html', 'about.html', 'foundation.html', 'legal.html', 'privacy.html'];
 const locales = [
-  { prefix: '', lang: 'en' },
-  { prefix: 'fr/', lang: 'fr' },
-  { prefix: 'tr/', lang: 'tr' }
+  { prefix: '', lang: 'en', marketTagline: 'Finance. Technology. Industrials. Gaming.' },
+  { prefix: 'fr/', lang: 'fr', marketTagline: 'Finance. Technologie. Industrie. Gaming.' },
+  { prefix: 'tr/', lang: 'tr', marketTagline: 'Finans. Teknoloji. Sanayi. Oyun.' }
 ];
-const pages = locales.flatMap(({ prefix, lang }) => pageNames.map((name) => ({ path: `${prefix}${name}`, lang })));
+const pages = locales.flatMap(({ prefix, lang, marketTagline }) => pageNames.map((name) => ({ path: `${prefix}${name}`, lang, marketTagline })));
 const requiredAssets = [
   'assets/styles.css',
   'assets/main.js',
@@ -42,6 +42,7 @@ for (const page of pages) {
     throw new Error(`${page.path}: root-relative asset path breaks GitHub project pages`);
   }
   if (html.includes('mb@aurevon-partners.com')) throw new Error(`${page.path}: old personal contact email remains`);
+  if (!html.includes(page.marketTagline)) throw new Error(`${page.path}: footer missing localized four-market tagline`);
 
   const localRefs = [...html.matchAll(/(?:href|src)="([^"]+)"/g)]
     .map((match) => match[1])
@@ -64,10 +65,24 @@ if (!homepage.includes('01 · About us')) throw new Error('Homepage missing Abou
 if (!homepage.includes('contact@aurevon-partners.com')) throw new Error('Homepage missing public contact email');
 
 const about = await readFile(resolve(root, 'about.html'), 'utf8');
-for (const term of ['asset managers', 'AIFMs', 'cybersecurity', 'Agentic AI as a Service', 'machinery', 'engineering firms']) {
+for (const term of ['asset managers', 'AIFMs', 'cybersecurity', 'Agentic AI as a Service', 'machinery', 'engineering firms', 'Gaming', 'Studios and IP', 'Interactive platforms']) {
   if (!about.toLowerCase().includes(term.toLowerCase())) throw new Error(`About page missing investment focus: ${term}`);
 }
 if (!about.includes('aria-current="page"')) throw new Error('About page navigation is not marked current');
+
+const localizedInvestmentFocus = [
+  { path: 'index.html', heading: 'Four markets.', sector: '<h3>Gaming</h3>' },
+  { path: 'about.html', heading: 'Four sectors.', sector: '<p class="sector-name">Gaming</p>' },
+  { path: 'fr/index.html', heading: 'Quatre marchés.', sector: '<h3>Gaming</h3>' },
+  { path: 'fr/about.html', heading: 'Quatre secteurs.', sector: '<p class="sector-name">Gaming</p>' },
+  { path: 'tr/index.html', heading: 'Dört pazar.', sector: '<h3>Oyun</h3>' },
+  { path: 'tr/about.html', heading: 'Dört sektör.', sector: '<p class="sector-name">Oyun</p>' }
+];
+for (const check of localizedInvestmentFocus) {
+  const html = await readFile(resolve(root, check.path), 'utf8');
+  if (!html.includes(check.heading)) throw new Error(`${check.path}: missing four-market heading`);
+  if (!html.includes(check.sector)) throw new Error(`${check.path}: missing gaming investment focus`);
+}
 
 for (const page of pages) {
   const html = await readFile(resolve(root, page.path), 'utf8');

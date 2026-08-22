@@ -88,7 +88,7 @@ button { color: inherit; }
 .section > * { max-width: var(--max); margin-left: auto; margin-right: auto; }
 .section-kicker { padding-bottom: 1rem; border-bottom: 1px solid var(--line); color: var(--teal); font-size: .68rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
 .intro-layout, .foundation-statement-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(3rem, 8vw, 9rem); margin-top: clamp(3rem, 6vw, 6rem); align-items: start; }
-.display-title { margin: 0; font-family: var(--serif); font-size: clamp(3rem, 5.5vw, 6rem); font-weight: 300; letter-spacing: -.06em; line-height: 1; }
+.display-title { margin: 0; overflow-wrap: break-word; font-family: var(--serif); font-size: clamp(3rem, 5.5vw, 6rem); font-weight: 300; letter-spacing: -.06em; line-height: 1; }
 .intro-copy { padding-top: .75rem; }
 .intro-copy p { color: var(--muted); }
 .intro-copy .lead { margin-top: 0; color: var(--ink); font-family: var(--sans); font-size: clamp(1.25rem, 1.75vw, 1.65rem); font-weight: 500; line-height: 1.5; }
@@ -132,6 +132,7 @@ button { color: inherit; }
 
 .contact { background: var(--ivory-soft); }
 .contact-layout { display: grid; grid-template-columns: 1.2fr .8fr; gap: clamp(4rem, 10vw, 10rem); margin-top: clamp(3rem, 6vw, 6rem); }
+.contact-layout > * { min-width: 0; }
 .contact-note { max-width: 620px; margin-top: 2rem; color: var(--muted); }
 .contact-card { display: grid; gap: 2rem; padding: 2.5rem; border: 1px solid var(--line); background: rgba(255,255,255,.42); font-style: normal; }
 .contact-card > div { padding-bottom: 1.5rem; border-bottom: 1px solid var(--line); }
@@ -268,6 +269,7 @@ button { color: inherit; }
   .perspective-rule { width: 80px; }
   .foundation-content { padding: 4.5rem var(--pad); }
   .foundation-content h2 { font-size: clamp(3.1rem, 15vw, 5rem); }
+  html[lang="tr"] .contact .display-title { font-size: clamp(2.8rem, 13vw, 4.5rem); }
   .footer-top { display: grid; gap: 2rem; }
   .footer-bottom { grid-template-columns: 1fr; gap: 1.6rem; }
   .footer-bottom > p { grid-column: auto; }
