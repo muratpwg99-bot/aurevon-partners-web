@@ -7,12 +7,13 @@ The site is available in English, French and Turkish. English pages live at the 
 ## Pages
 
 - `index.html` — company overview, investment markets and contact
-- `about.html` — detailed company profile and sector investment focus
+- `about.html` — detailed company profile and investment overview
+- `industries.html` — focused opportunity map across financials, technology, industrials and gaming
 - `foundation.html` — annual philanthropic division and programme with status disclosure
 - `legal.html` — company and SPF legal notice
 - `privacy.html` — privacy information
-- `fr/` — complete French version of all five pages
-- `tr/` — complete Turkish version of all five pages
+- `fr/` — complete French version of all six pages
+- `tr/` — complete Turkish version of all six pages
 
 ## Local preview
 

@@ -2,7 +2,7 @@ import { readFile, access } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 
 const root = resolve(import.meta.dirname, '..');
-const pageNames = ['index.html', 'about.html', 'foundation.html', 'legal.html', 'privacy.html'];
+const pageNames = ['index.html', 'about.html', 'industries.html', 'foundation.html', 'legal.html', 'privacy.html'];
 const locales = [
   { prefix: '', lang: 'en', marketTagline: 'Finance. Technology. Industrials. Gaming.' },
   { prefix: 'fr/', lang: 'fr', marketTagline: 'Finance. Technologie. Industrie. Gaming.' },
@@ -65,10 +65,16 @@ if (!homepage.includes('01 · About us')) throw new Error('Homepage missing Abou
 if (!homepage.includes('contact@aurevon-partners.com')) throw new Error('Homepage missing public contact email');
 
 const about = await readFile(resolve(root, 'about.html'), 'utf8');
-for (const term of ['asset managers', 'AIFMs', 'cybersecurity', 'Agentic AI as a Service', 'machinery', 'engineering firms', 'Gaming', 'Studios and IP', 'Interactive platforms']) {
+for (const term of ['AIFMs', 'GP stakes', 'cybersecurity', 'fintech', 'printing', 'packaging', 'Gaming', 'PC and desktop studios', 'Developer tools']) {
   if (!about.toLowerCase().includes(term.toLowerCase())) throw new Error(`About page missing investment focus: ${term}`);
 }
 if (!about.includes('aria-current="page"')) throw new Error('About page navigation is not marked current');
+
+const industries = await readFile(resolve(root, 'industries.html'), 'utf8');
+for (const term of ['AIFMs', 'GP and management-company stakes', 'Cybersecurity', 'Fintech software', 'Printing and converting', 'Packaging machinery', 'PC and desktop studios', 'Enduring game IP']) {
+  if (!industries.toLowerCase().includes(term.toLowerCase())) throw new Error(`Industries page missing opportunity focus: ${term}`);
+}
+if (!industries.includes('aria-current="page"')) throw new Error('Industries page navigation is not marked current');
 
 const localizedInvestmentFocus = [
   { path: 'index.html', heading: 'Four markets.', sector: '<h3>Gaming</h3>' },
@@ -87,6 +93,20 @@ for (const check of localizedInvestmentFocus) {
 for (const page of pages) {
   const html = await readFile(resolve(root, page.path), 'utf8');
   if (!html.includes('href="about.html"')) throw new Error(`${page.path}: About navigation does not link to the dedicated page`);
+  if (!html.includes('href="industries.html"')) throw new Error(`${page.path}: Industries navigation does not link to the dedicated page`);
+}
+
+const localizedIndustriesFocus = [
+  { path: 'industries.html', heading: 'Four industries.', terms: ['AIFMs', 'Cybersecurity', 'Printing and converting', 'PC and desktop studios'] },
+  { path: 'fr/industries.html', heading: 'Quatre secteurs.', terms: ['AIFM', 'Cybersécurité', 'Impression et transformation', 'Studios PC et desktop'] },
+  { path: 'tr/industries.html', heading: 'Dört sektör.', terms: ['AIFM’ler', 'Siber güvenlik', 'Baskı ve dönüştürme', 'PC ve masaüstü stüdyoları'] }
+];
+for (const check of localizedIndustriesFocus) {
+  const html = await readFile(resolve(root, check.path), 'utf8');
+  if (!html.includes(check.heading)) throw new Error(`${check.path}: missing localized industries heading`);
+  for (const term of check.terms) {
+    if (!html.includes(term)) throw new Error(`${check.path}: missing localized industries focus: ${term}`);
+  }
 }
 
 const foundation = await readFile(resolve(root, 'foundation.html'), 'utf8');
